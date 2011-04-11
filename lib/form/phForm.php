@@ -52,7 +52,7 @@ class phForm implements phFormViewElement, phData
 	 */
 	protected $_validator = null;
 	
-	public function __construct($name, $template,$params=array())
+	public function __construct($name, $template,array $params=array())
 	{
 		if(!$this->isValidId($name))
 		{
