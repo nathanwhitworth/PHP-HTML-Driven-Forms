@@ -91,6 +91,12 @@ class phFormView
 	 */
 	protected $_initialized = false;
 	
+	/**
+	 * Holds custom view variables
+	 * @var array
+	 */
+	protected $_params = array();
+	
 	public function __construct($template, phForm $form)
 	{
 		$this->_template = $template;
@@ -271,6 +277,36 @@ class phFormView
 		}
 		
 		return $key;
+	}
+	
+	/**
+	 * Set a custom view parameter
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 */
+	public function setParam($name,$value)
+	{
+		$this->_params[$name] = $value;
+	}
+	
+	/**
+	 * Get a custom view parameter.
+	 * If $name is not set, then it will return the default value
+	 * 
+	 * @param string $name
+	 * @param string $default
+	 */
+	public function getParam($name,$default=null)
+	{
+		if (isset($this->_params[$name]))
+		{
+			return $this->_params[$name];
+		}
+		else
+		{
+			return $default;
+		}
 	}
 	
 	/**

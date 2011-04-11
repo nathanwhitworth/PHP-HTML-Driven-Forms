@@ -52,11 +52,19 @@ class phForm implements phFormViewElement, phData
 	 */
 	protected $_validator = null;
 	
-	public function __construct($name, $template)
+	public function __construct($name, $template,$params=array())
 	{
 		if(!$this->isValidId($name))
 		{
 			throw new phFormException("Invalid form name '{$name}'", $code);
+		}
+		
+		if (count($params))
+		{
+			foreach ($params as $key => $param)
+			{
+				$this->_view->setParam($key,$value);
+			}
 		}
 		
 		$this->_name = $name;
