@@ -59,6 +59,12 @@ class phForm implements phFormViewElement, phData
 			throw new phFormException("Invalid form name '{$name}'", $code);
 		}
 		
+		
+		$this->_name = $name;
+		$this->setNameFormat($name . '[%s]');
+		$this->setIdFormat($name . '_%s');
+		
+		$this->_view = new phFormView($template, $this);
 		if (count($params))
 		{
 			foreach ($params as $key => $param)
@@ -66,12 +72,6 @@ class phForm implements phFormViewElement, phData
 				$this->_view->setParam($key,$value);
 			}
 		}
-		
-		$this->_name = $name;
-		$this->setNameFormat($name . '[%s]');
-		$this->setIdFormat($name . '_%s');
-		
-		$this->_view = new phFormView($template, $this);
 		$this->_elementFinder = new phElementFinder($this->_view);
 	}
 	
