@@ -69,7 +69,7 @@ class phForm implements phFormViewElement, phData
 		{
 			foreach ($params as $key => $param)
 			{
-				$this->_view->setParam($key,$value);
+				$this->_view->setParam($key,$param);
 			}
 		}
 		$this->_elementFinder = new phElementFinder($this->_view);
